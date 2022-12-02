@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narattr - Narrate your story today!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editnote-styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="topnav">
+        <div>
+            <img src="{{ url_for('static', filename='/img/Narratr-logo.png') }}" alt="Narratr Logo" class="narratrlogo">
+        </div>
+        <div class="links">
+            <a id="username" href="#">Hey there, {{user.first_name}}</a>
+            <a href="/logout"><button class="signin">Log Out</button></a>
+    </div>
+    </div>
+    <div>
+        <p class="add-title">Anything interesting happening in your life lately?</p>
+
+        <form action="/update/note" method="post">
+            {% with messages = get_flashed_messages(category_filter=['sighting']) %}
+                {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>Oops!</strong>
+                        {% for message in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %}
+                </div>
+                {% endif %}
+            {% endwith %}
+            <div class="form-style">
+                <div>
+                    <input type="hidden" name="id" value="{{edit.id}}">
+                    <div>
+                        <label for="title">Title:</label><br>
+                        <input type="text" name="title" class="title-edit" value="{{edit.title}}">
+                    </div>
+                    <div>
+                        <label for="date_of_note">Date:</label><br>
+                        <input type="datetime-local" name="date_of_note" value="{{edit.date_of_note}}">
+                    </div>
+                    <div>
+                        <label for="note">Description:</label><br>
+                        <textarea type="text" name="note" class="description-edit">{{edit.note}}</textarea>
+                    </div>
+                </div>
+                    <br>
+                    <input type="submit" value="Submit" id="submitbtn">
+            </div>
+    </div>
+        </form>
+
+
+
+
+
+
+
+
+    </div>

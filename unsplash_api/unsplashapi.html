@@ -1,0 +1,81 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Random Image</title>
+</head>
+<style>
+body {
+    background-color: yellow;
+    text-align: center;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#unsplashImage {
+    max-height: 500px;
+    border: 20px solid black;
+    transform: rotate(3deg);
+}
+
+h1 {
+    font-size: 56px;
+}
+
+.imageDetails {
+    background-color: black;
+    margin-top: 50px;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    width: fit-content;
+}
+
+.imageDetails a {
+    color: #FFF;
+}
+
+.imageDetails a:hover {
+    color: yellow;
+}
+</style>
+
+<body>
+    <h1>Random Unsplash Image</h1>
+    <div class="imageContainer">
+    <a id="imageLink" href="#">
+        <img alt="" id="unsplashImage" />
+    </a>
+    </div>
+    <p class="imageDetails">Photo by <a id="creator" href="#">NAME</a> on <a href="https://www.unsplash.com">Unsplash</a>!</p>
+    <script>
+        let clientID="aC07ml5HUZwqbhbZceukrPMFIDb_2rdmExYpCJ9f_O8";
+        let endpoint=`https://api.unsplash.com/photos/random/?client_id=${clientID}`;
+
+        let imageElement=document.querySelector("#unsplashImage");
+        let imageLink=document.querySelector("#imageLink");
+        let creator=document.querySelector("#creator");
+
+        fetch(endpoint)
+            .then(function (response){
+                return response.json();
+            })
+            .then(function (jsonData){
+                imageElement.src=jsonData.urls.regular;
+                imageLink.setAttribute("href",jsonData.links.html);
+
+                creator.innerText=jsonData.user.name;
+                creator.setAttribute("href",jsonData.user.portfolio_url);
+            })
+            .catch(function(error){
+                console.log("Error:"+error);
+            });
+    </script>
+</body>
+
+</html>

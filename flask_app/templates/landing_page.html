@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narattr - Narrate your story today!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="topnav">
+        <div>
+            <img src="{{ url_for('static', filename='/img/Narratr-logo.png') }}" alt="Narratr Logo" class="narratrlogo">
+        </div>
+        <div class="links">
+            <a href="/">Home</a>
+            <a href="#">About Us</a>
+            <a href="/signin"><button class="signin">Sign In</button></a>
+    </div>
+    </div>
+    <div class="main-content">
+        <div class="main-content-a">
+            <p class="headline">Your <span id="ultimate">Ultimate</span><br>Digital Journal</p>
+            <p class="narratepara">Narrate your journey to us<br><span class="today">TODAY!</span></p>
+            <a href="/signin"><button class="startn">Start Narrating!</button></a>
+        </div>
+        <div class="main-content-b">
+            <img src="{{ url_for('static', filename='/img/andrew-neel-cckf4TsHAuw-unsplash.jpg') }}" alt="Headline Image" class="headlineimg">
+        </div>
+    </div>
+    <div class="sub-content">
+        <div class="highlightpara">
+            <p>A platform built for a <br>peace of mind</p>
+        </div>
+        <div class="highlightboxes">
+            <div class="box1">
+                <p class="subtextbox">Clear your<br>tangled mind</p>
+                <p class="subtextbox2">Keep writing through our<br>platform and relieve your stress </p>
+            </div>
+            <div class="box2">
+                <p class="subtextbox">Write down<br>your thoughts</p>
+                <p class="subtextbox2">Creating a habit of writing down<br>your thoughts can be a life-<br>changing thing. Make the time to<br>think about you and your life</p>
+            </div>
+            <div class="box3">
+                <p class="subtextbox">The choice is<br>yours</p>
+                <p class="subtextbox2">Build an emotional safe to empty <br>your mind out and heart without<br>interruptions and judgements</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        </p class="footer-text"><br>© Copyright 2022 by Chris Vaz<br>All Rights Reserved.</p>
+    </div>
+    <script src="./dist/blobity.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

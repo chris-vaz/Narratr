@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narattr - Narrate your story today!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/newnote-styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body id="unsplashImage">
+    <div class="topnav">
+        <div>
+            <img src="{{ url_for('static', filename='/img/Narratr-logo.png') }}" alt="Narratr Logo" class="narratrlogo">
+        </div>
+        <div class="links">
+            <a id="username" href="#">Hey there, {{user.first_name}}</a>
+            <a href="/logout"><button class="signin">Log Out</button></a>
+    </div>
+    </div>
+    <div>
+        <div class="top-section">
+        <p class="add-title">Anything interesting happening in your life lately?</p>
+        <button id="dynamicwp">Change Wallpaper</button>
+        </div>
+        <form action="/create/note" method="post">
+            {% with messages = get_flashed_messages(category_filter=['sighting']) %}
+                {% if messages %}
+                <div role="alert">
+                    <strong>Oops!</strong>
+                        {% for message in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %}
+                </div>
+                {% endif %}
+            {% endwith %}
+            <div class="form-style">
+                <div>
+                    <div>
+                        <label for="title">Title:</label><br>
+                        <input type="text" name="title" class="title-edit">
+                    </div>
+                    <div>
+                        <label for="date_of_note">Date:</label><br>
+                        <input type="date" name="date_of_note">
+                    </div>
+                    <div>
+                        <label for="note">Description:</label><br>
+                        <textarea type="text" name="note" class="description-edit"></textarea>
+                    </div>
+                </div>
+                    <br>
+                    <input type="submit" value="Submit" id="submitbtn">
+                    <br>
+                    <p class="imageDetails">Photo by <a id="creator" href="#">NAME</a> on <a href="https://www.unsplash.com">Unsplash</a>!</p>
+            </div>
+    </div>
+        </form>
+        <script src="{{ url_for('static', filename='/js/script.js') }}"></script>
+    </body>
+    </html>
